@@ -14,7 +14,7 @@ Chat App jest nowoczesną platformą komunikacyjną zaprojektowaną do bezpieczn
 
 ## 3. Technologie
 
-Aplikacja oparta jest na zestawie nowoczesnych technologii i frameworków, aby zapewnić skalowalną i łatwą w utrzymaniu platformę komunikacyjną:
+Aplikacja oparta jest na solidnych technologiach i frameworkach wspieranych przez Spring Boot, aby zapewnić skalowalną i łatwą w utrzymaniu platformę komunikacyjną:
 
 - **Spring Boot**: Ułatwia tworzenie wydajnych i odpornych aplikacji opartych na Spring Framework.
 - **Spring WebSocket API**: Umożliwia interaktywne, dwukierunkowe sesje komunikacyjne między klientami a serwerami.
@@ -65,6 +65,13 @@ classDiagram
         +login()
         +logout()
     }
+    class Contact {
+        +String firstName
+        +String lastName
+        +String email
+        +addContact()
+        +removeContact()
+    }
     class Message {
         +String text
         +Date dispatchTime
@@ -84,6 +91,13 @@ erDiagram
         last_name varchar
         email varchar
     }
+    CONTACTS {
+        id int PK
+        first_name varchar
+        last_name varchar
+        email varchar
+        owner_id int
+    }
     MESSAGES {
         id int PK
         text varchar
@@ -93,6 +107,7 @@ erDiagram
     }
     USERS ||--o{ MESSAGES : sends
     USERS ||--o{ MESSAGES : receives
+    USERS ||--o{ CONTACTS : owns
 ```
 
 ## 7. Specyfikacja API OpenAPI
