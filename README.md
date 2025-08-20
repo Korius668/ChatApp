@@ -1,93 +1,101 @@
 # Chat App Project README
 
-## 1. Opis Projektu
+## 1. Project Overview
 
-Aplikacja Chat App to nowoczesna platforma komunikacyjna umożliwiająca użytkownikom wymianę wiadomości w czasie rzeczywistym. Głównym celem aplikacji jest umożliwienie użytkownikom bezpiecznej i wydajnej komunikacji za pomocą intuicyjnego interfejsu. Użytkownicy mogą rejestrować się, logować, przeglądać listę kontaktów, wysyłać i odbierać wiadomości, a także przeglądać historię konwersacji.
+The Chat App is a modern communication platform that allows users to exchange messages in real-time securely and efficiently through an intuitive interface. Users can register, log in, view their contact list, send and receive messages, and view their conversation history.
 
-## 2. Funkcje Aplikacji
+## 2. Application Features
 
-- **Rejestracja Użytkownika**: Użytkownicy mogą tworzyć nowe konta za pomocą formularza rejestracyjnego.
-- **Logowanie**: Uwierzytelnienie użytkowników za pomocą JWT, zapewniające bezpieczny dostęp do aplikacji.
-- **Lista Kontaktów**: Możliwość dodawania, edytowania i usuwania kontaktów w aplikacji.
-- **Wysyłanie i Odbieranie Wiadomości**: Umożliwienie komunikacji w czasie rzeczywistym za pomocą WebSocket API.
-- **Historia Wiadomości**: Przechowywanie i wyświetlanie historii konwersacji między użytkownikami.
+- **User Registration**: Users can create new accounts using a registration form.
+- **Login**: User authentication through JWT ensures secure access to the application.
+- **Contact List**: Ability to add, edit, and delete contacts in the application.
+- **Sending and Receiving Messages**: Enables real-time communication via WebSocket API.
+- **Message History**: Stores and displays the conversation history between users.
 
-## 3. Technologie
+## 3. Technologies
 
-Aplikacja oparta jest o szereg nowoczesnych technologii i frameworków:
+The application is built on a suite of modern technologies and frameworks:
 
-- **Jakarta EE**: Platforma do tworzenia skalowalnych aplikacji biznesowych.
-- **JAX-RS**: Framework do tworzenia serwisów RESTful.
-- **WebSocket API**: Protokół umożliwiający dwukierunkową komunikację między klientem a serwerem.
-- **JPA (Hibernate)**: Framework do mapowania obiektowo-relacyjnego, używany do zarządzania bazą danych.
-- **PostgreSQL**: Relacyjna baza danych.
-- **AspectJ**: Rozszerzenie Java do programowania aspektowego.
-- **JWT**: Standard dla bezpiecznego przesyłania informacji jako obiekty JSON.
-- **Docker & Docker Compose**: Narzędzia do wirtualizacji kontenerów i orkiestracji aplikacji.
+- **Jakarta EE**: A platform for building scalable business applications.
+- **JAX-RS**: A framework for creating RESTful services.
+- **WebSocket API**: A protocol allowing two-way communication between the client and server.
+- **JPA (Hibernate)**: An object-relational mapping framework used for database management.
+- **PostgreSQL**: A relational database system.
+- **AspectJ**: A Java extension for aspect-oriented programming.
+- **JWT**: A standard for securely transmitting information as JSON objects.
+- **Docker & Docker Compose**: Tools for container virtualization and application orchestration.
 
-## 4. Narzędzia Projektowe
+## 4. Project Tools
 
-Proces tworzenia i testowania aplikacji wspierany jest przez liczne narzędzia:
+The development and testing of the application are supported by various tools:
 
-- **IntelliJ IDEA**: Zintegrowane środowisko developerskie.
-- **JavaDoc**: Narzędzie do generowania dokumentacji kodu źródłowego Java.
-- **JUnit**: Framework do testów jednostkowych.
-- **Postman**: Aplikacja do testowania API.
-- **Cypress**: Narzędzie do end-to-end testowania aplikacji webowych.
-- **Maven**: System zarządzania zależnościami i budowaniem projektów Java.
+- **IntelliJ IDEA**: Integrated development environment.
+- **JavaDoc**: A tool for generating Java source code documentation.
+- **JUnit**: A framework for unit testing.
+- **Postman**: An application for API testing.
+- **Cypress**: A tool for end-to-end testing of web applications.
+- **Maven**: A dependency management and build system for Java projects.
 
-## 5. Diagramy
+## 5. System Compatibility
 
-Poniżej znajdują się diagramy przedstawiające architekturę i strukturę aplikacji:
+The application is compatible with:
 
-### Architektura Systemu
+- **Java 17 or newer**: Ensures compatibility with the latest features and improvements.
+- **Docker 20.x and Docker Compose 2.x**: Required for building and managing container environments.
+- **Browsers**: Ensured compatibility with modern browsers including Chrome, Firefox, and Edge.
+
+## 6. Diagrams
+
+Below are diagrams illustrating the application's architecture and structure:
+
+### System Architecture
 ```mermaid
 graph TD;
-    Użytkownik-->UI;
-    UI-->Serwer;
-    Serwer-->BazaDanych;
-    Serwer-->API;
-    API-->ZewnętrzneSerwisy;
+    User-->UI;
+    UI-->Server;
+    Server-->Database;
+    Server-->API;
+    API-->ExternalServices;
 ```
 
-### Diagram Klasy UML
+### UML Class Diagram
 ```mermaid
 classDiagram
-    class Użytkownik {
-        +String imię
-        +String nazwisko
+    class User {
+        +String firstName
+        +String lastName
         +String email
         +login()
-        +wyloguj()
+        +logout()
     }
-    class Wiadomość {
-        +String tekst
-        +Data czasWysyłki
-        +użytkownikWysyłający
-        +użytkownikOdbierający
-        +wyślij()
-        +odbierz()
+    class Message {
+        +String text
+        +Date dispatchTime
+        +sendingUser
+        +receivingUser
+        +send()
+        +receive()
     }
 ```
 
-### Schemat Bazy Danych
+### Database Schema
 ```mermaid
 erDiagram
-    UZYTKOWNICY {
+    USERS {
         id int PK
-        imię varchar
-        nazwisko varchar
+        first_name varchar
+        last_name varchar
         email varchar
     }
-    WIADOMOSCI {
+    MESSAGES {
         id int PK
-        tekst varchar
-        czas_wysyłki timestamp
-        nadawca_id int
-        odbiorca_id int
+        text varchar
+        dispatch_time timestamp
+        sender_id int
+        receiver_id int
     }
-    UZYTKOWNICY ||--o{ WIADOMOSCI : nadał
-    UZYTKOWNICY ||--o{ WIADOMOSCI : odebrał
+    USERS ||--o{ MESSAGES : sends
+    USERS ||--o{ MESSAGES : receives
 ```
 
-**Uwagi końcowe**: Dokumentacja techniczna jest kluczowa dla efektywnego zrozumienia i rozwoju aplikacji. Proszę zapewnić, że wszystkie fragmenty są regularnie aktualizowane i odzwierciedlają aktualny stan projektu.
+**Final Notes**: Technical documentation is crucial for effectively understanding and developing the application. Please ensure that all parts are regularly updated to reflect the current state of the project.
