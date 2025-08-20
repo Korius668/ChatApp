@@ -14,7 +14,7 @@ Chat App jest nowoczesną platformą komunikacyjną zaprojektowaną do bezpieczn
 
 ## 3. Technologie
 
-Aplikacja opiera się na zestawie nowoczesnych technologii i frameworków, aby zapewnić skalowalną i łatwą w utrzymaniu platformę komunikacyjną:
+Aplikacja oparta jest na zestawie nowoczesnych technologii i frameworków, aby zapewnić skalowalną i łatwą w utrzymaniu platformę komunikacyjną:
 
 - **Spring Boot**: Ułatwia tworzenie wydajnych i odpornych aplikacji opartych na Spring Framework.
 - **Spring WebSocket API**: Umożliwia interaktywne, dwukierunkowe sesje komunikacyjne między klientami a serwerami.
@@ -97,94 +97,76 @@ erDiagram
 
 ## 7. Specyfikacja API OpenAPI
 
-```yaml
-openapi: 3.0.0
-info:
-  title: Chat App API
-  version: 1.0.0
-paths:
-  /auth/register:
-    post:
-      summary: Register a new user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserRegistration'
-      responses:
-        '201':
-          description: User registered successfully
-  /auth/login:
-    post:
-      summary: Authenticate user and return a token
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserLogin'
-      responses:
-        '200':
-          description: Authentication successful
-  /contacts:
-    get:
-      summary: Retrieve contact list
-      responses:
-        '200':
-          description: Contact list retrieved successfully
-    post:
-      summary: Add a new contact
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Contact'
-      responses:
-        '201':
-          description: Contact added successfully
-  /contacts/{id}:
-    delete:
-      summary: Remove a contact
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '204':
-          description: Contact removed successfully
-components:
-  schemas:
-    UserRegistration:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-    UserLogin:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-    Contact:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-```
+### REST API Endpoints
 
-**Ostateczne Uwagi**: Regularne aktualizacje dokumentacji technicznej są kluczowe dla utrzymania integralności projektu oraz zrozumienia.
+#### Rejestracja Użytkownika
+```http
+POST /auth/register
+```
+- **Opis**: Rejestracja nowego użytkownika
+- **Body**: 
+  - `firstName`: string
+  - `lastName`: string
+  - `email`: string
+  - `password`: string
+- **Odpowiedzi**: 
+  - `201`: Użytkownik zarejestrowany pomyślnie
+
+#### Logowanie
+```http
+POST /auth/login
+```
+- **Opis**: Uwierzytelnienie użytkownika i zwrócenie tokenu
+- **Body**: 
+  - `email`: string
+  - `password`: string
+- **Odpowiedzi**: 
+  - `200`: Uwierzytelnienie pomyślne
+
+#### Zarządzanie Kontaktami
+- **Pobranie listy kontaktów**
+```http
+GET /contacts
+```
+  - **Odpowiedzi**: 
+    - `200`: Lista kontaktów pobrana pomyślnie
+
+- **Dodanie nowego kontaktu**
+```http
+POST /contacts
+```
+  - **Body**: 
+    - `firstName`: string
+    - `lastName`: string
+    - `email`: string
+  - **Odpowiedzi**: 
+    - `201`: Kontakt dodany pomyślnie
+
+- **Usunięcie kontaktu**
+```http
+DELETE /contacts/{id}
+```
+  - **Parametry**: 
+    - `id`: integer (wymagany)
+  - **Odpowiedzi**: 
+    - `204`: Kontakt usunięty pomyślnie
+
+#### Historia Wiadomości
+- **Pobranie historii wiadomości**
+```http
+GET /messages/history
+```
+  - **Odpowiedzi**: 
+    - `200`: Historia wiadomości pobrana pomyślnie
+
+### WebSocket Endpoint
+
+#### Real-time Messaging
+```websocket
+ws://{server}/chat
+```
+- **Opis**: Obsługuje wiadomości w czasie rzeczywistym pomiędzy użytkownikami
+- **Bezpieczeństwo**: 
+  - Uwierzytelnienie za pomocą JWT na wiadomościach początkowych w sesji WebSocket
+
+**Ostateczne Uwagi**: Regularne aktualizacje dokumentacji technicznej są kluczowe dla utrzymania integralności projektu oraz jego zrozumienia.
