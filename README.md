@@ -2,51 +2,49 @@
 
 ## 1. Project Overview
 
-The Chat App is a modern communication platform that allows users to exchange messages in real-time securely and efficiently through an intuitive interface. Users can register, log in, view their contact list, send and receive messages, and view their conversation history.
+The Chat App is a modern communication platform designed for seamless and secure real-time messaging through a user-friendly interface. It provides functionalities such as user registration, login, contact management, sending and receiving messages, and accessing conversation history. The system emphasizes robust security and efficient data handling.
 
 ## 2. Application Features
 
-- **User Registration**: Users can create new accounts using a registration form.
-- **Login**: User authentication through JWT ensures secure access to the application.
-- **Contact List**: Ability to add, edit, and delete contacts in the application.
-- **Sending and Receiving Messages**: Enables real-time communication via WebSocket API.
-- **Message History**: Stores and displays the conversation history between users.
+- **User Registration**: Users can easily create new accounts using a streamlined registration form.
+- **Login**: Secure user authentication using JWT ensures that only authorized individuals access the application.
+- **Contact List**: Users can create, update, and delete their contact information within the app.
+- **Sending and Receiving Messages**: Supports real-time communication via the WebSocket API.
+- **Message History**: The application records and shows the conversation history between users for easy reference.
 
 ## 3. Technologies
 
-The application is built on a suite of modern technologies and frameworks:
+The application relies on a suite of modern technologies and frameworks to deliver a scalable and maintainable communication platform:
 
-- **Jakarta EE**: A platform for building scalable business applications.
-- **JAX-RS**: A framework for creating RESTful services.
-- **WebSocket API**: A protocol allowing two-way communication between the client and server.
-- **JPA (Hibernate)**: An object-relational mapping framework used for database management.
-- **PostgreSQL**: A relational database system.
-- **AspectJ**: A Java extension for aspect-oriented programming.
-- **JWT**: A standard for securely transmitting information as JSON objects.
-- **Docker & Docker Compose**: Tools for container virtualization and application orchestration.
+- **Jakarta EE**: Provides a robust foundation for building scalable enterprise applications.
+- **JAX-RS**: Facilitates the creation of RESTful web services.
+- **WebSocket API**: Enables interactive, two-way communication sessions between clients and servers.
+- **JPA (Hibernate)**: Manages database interactions using object-relational mapping.
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **AspectJ**: Implements aspect-oriented programming for effective code separation.
+- **JWT**: Secures information with JSON Web Tokens.
+- **Docker & Docker Compose**: Containerization and orchestration tools simplifying deployment processes.
 
 ## 4. Project Tools
 
-The development and testing of the application are supported by various tools:
+A variety of tools aid in the development and testing of the application:
 
-- **IntelliJ IDEA**: Integrated development environment.
-- **JavaDoc**: A tool for generating Java source code documentation.
-- **JUnit**: A framework for unit testing.
-- **Postman**: An application for API testing.
-- **Cypress**: A tool for end-to-end testing of web applications.
-- **Maven**: A dependency management and build system for Java projects.
+- **IntelliJ IDEA**: A comprehensive integrated development environment for Java.
+- **JavaDoc**: Generates detailed documentation directly from Java source code.
+- **JUnit**: Provides a framework for rigorous unit testing.
+- **Postman**: A versatile tool for API testing and development.
+- **Cypress**: Facilitates end-to-end testing for consistent user experience.
+- **Maven**: Manages project dependencies and builds processes efficiently.
 
 ## 5. System Compatibility
 
-The application is compatible with:
+The application ensures compatibility with:
 
-- **Java 17 or newer**: Ensures compatibility with the latest features and improvements.
-- **Docker 20.x and Docker Compose 2.x**: Required for building and managing container environments.
-- **Browsers**: Ensured compatibility with modern browsers including Chrome, Firefox, and Edge.
+- **Java 17 or newer**: Aligns with the latest improvements in the Java ecosystem.
+- **Docker 20.x and Docker Compose 2.x**: Essential for deploying and managing application containers.
+- **Browsers**: Compatible with modern web browsers, including Chrome, Firefox, and Edge.
 
-## 6. Diagrams
-
-Below are diagrams illustrating the application's architecture and structure:
+## 6. Diagrams and Architecture
 
 ### System Architecture
 ```mermaid
@@ -71,8 +69,8 @@ classDiagram
     class Message {
         +String text
         +Date dispatchTime
-        +sendingUser
-        +receivingUser
+        +User sendingUser
+        +User receivingUser
         +send()
         +receive()
     }
@@ -98,4 +96,18 @@ erDiagram
     USERS ||--o{ MESSAGES : receives
 ```
 
-**Final Notes**: Technical documentation is crucial for effectively understanding and developing the application. Please ensure that all parts are regularly updated to reflect the current state of the project.
+### API Contract
+
+#### Authentication API
+- **POST /auth/register**: Register a new user.
+- **POST /auth/login**: Authenticate user and return a token.
+
+#### Contact Management API
+- **GET /contacts**: Retrieve contact list.
+- **POST /contacts**: Add a new contact.
+- **DELETE /contacts/{id}**: Remove a contact.
+
+#### Messaging API
+- **WebSocket /messages**: Send and receive messages in real-time.
+
+**Final Notes**: Regular updates to technical documentation are vital for maintaining the project's integrity and understanding.
