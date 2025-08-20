@@ -1,52 +1,52 @@
-# Chat App Project README
+# Projekt Chat App README
 
-## 1. Project Overview
+## 1. Przegląd Projektu
 
-The Chat App is a modern communication platform designed for seamless and secure real-time messaging through a user-friendly interface. It provides functionalities such as user registration, login, contact management, sending and receiving messages, and accessing conversation history. The system emphasizes robust security and efficient data handling.
+Chat App jest nowoczesną platformą komunikacyjną zaprojektowaną do bezpiecznego i płynnego przesyłania wiadomości w czasie rzeczywistym za pomocą przyjaznego dla użytkownika interfejsu. Zapewnia funkcjonalności takie jak rejestracja użytkowników, logowanie, zarządzanie kontaktami, wysyłanie i odbieranie wiadomości oraz dostęp do historii konwersacji. System kładzie duży nacisk na solidne zabezpieczenia oraz efektywne zarządzanie danymi.
 
-## 2. Application Features
+## 2. Funkcje Aplikacji
 
-- **User Registration**: Users can easily create new accounts using a streamlined registration form.
-- **Login**: Secure user authentication using JWT ensures that only authorized individuals access the application.
-- **Contact List**: Users can create, update, and delete their contact information within the app.
-- **Sending and Receiving Messages**: Supports real-time communication via the WebSocket API.
-- **Message History**: The application records and shows the conversation history between users for easy reference.
+- **Rejestracja Użytkownika**: Użytkownicy mogą łatwo tworzyć nowe konta za pomocą uproszczonego formularza rejestracyjnego.
+- **Logowanie**: Bezpieczne uwierzytelnianie użytkowników za pomocą JWT zapewnia, że dostęp do aplikacji mają tylko autoryzowane osoby.
+- **Lista Kontaktów**: Użytkownicy mogą tworzyć, aktualizować oraz usuwać informacje o swoich kontaktach w aplikacji.
+- **Wysyłanie i Odbieranie Wiadomości**: Obsługa komunikacji w czasie rzeczywistym poprzez API WebSocket.
+- **Historia Wiadomości**: Aplikacja rejestruje i pokazuje historię konwersacji pomiędzy użytkownikami dla łatwego odniesienia.
 
-## 3. Technologies
+## 3. Technologie
 
-The application relies on a suite of modern technologies and frameworks to deliver a scalable and maintainable communication platform:
+Aplikacja opiera się na zestawie nowoczesnych technologii i frameworków, aby zapewnić skalowalną i łatwą w utrzymaniu platformę komunikacyjną:
 
-- **Jakarta EE**: Provides a robust foundation for building scalable enterprise applications.
-- **JAX-RS**: Facilitates the creation of RESTful web services.
-- **WebSocket API**: Enables interactive, two-way communication sessions between clients and servers.
-- **JPA (Hibernate)**: Manages database interactions using object-relational mapping.
-- **PostgreSQL**: A powerful, open-source object-relational database system.
-- **AspectJ**: Implements aspect-oriented programming for effective code separation.
-- **JWT**: Secures information with JSON Web Tokens.
-- **Docker & Docker Compose**: Containerization and orchestration tools simplifying deployment processes.
+- **Jakarta EE**: Zapewnia solidną podstawę do budowy skalowalnych aplikacji korporacyjnych.
+- **JAX-RS**: Ułatwia tworzenie usług internetowych RESTful.
+- **API WebSocket**: Umożliwia interaktywne, dwukierunkowe sesje komunikacyjne między klientami a serwerami.
+- **JPA (Hibernate)**: Zarządza interakcjami z bazą danych za pomocą odwzorowania obiektowo-relacyjnego.
+- **PostgreSQL**: Potężny, otwartoźródłowy system baz danych obiektowo-relacyjnych.
+- **AspectJ**: Implementuje programowanie zorientowane na aspekty dla efektywnego rozdzielenia kodu.
+- **JWT**: Zabezpiecza informacje za pomocą JSON Web Tokens.
+- **Docker & Docker Compose**: Narzędzia do konteneryzacji i orkiestracji upraszczające procesy wdrożenia.
 
-## 4. Project Tools
+## 4. Narzędzia Projektowe
 
-A variety of tools aid in the development and testing of the application:
+Różnorodne narzędzia wspierają rozwój i testowanie aplikacji:
 
-- **IntelliJ IDEA**: A comprehensive integrated development environment for Java.
-- **JavaDoc**: Generates detailed documentation directly from Java source code.
-- **JUnit**: Provides a framework for rigorous unit testing.
-- **Postman**: A versatile tool for API testing and development.
-- **Cypress**: Facilitates end-to-end testing for consistent user experience.
-- **Maven**: Manages project dependencies and builds processes efficiently.
+- **IntelliJ IDEA**: Kompleksowe środowisko integracji dla Java.
+- **JavaDoc**: Generuje szczegółową dokumentację bezpośrednio z kodu źródłowego Java.
+- **JUnit**: Umożliwia rygorystyczne testowanie jednostkowe.
+- **Postman**: Wszechstronne narzędzie do testowania i rozwijania API.
+- **Cypress**: Ułatwia testy end-to-end zapewniając spójne doświadczenia użytkownika.
+- **Maven**: Efektywnie zarządza zależnościami projektu oraz procesami budowania.
 
-## 5. System Compatibility
+## 5. Kompatybilność Systemu
 
-The application ensures compatibility with:
+Aplikacja zapewnia kompatybilność z:
 
-- **Java 17 or newer**: Aligns with the latest improvements in the Java ecosystem.
-- **Docker 20.x and Docker Compose 2.x**: Essential for deploying and managing application containers.
-- **Browsers**: Compatible with modern web browsers, including Chrome, Firefox, and Edge.
+- **Java 17 lub nowszą**: Zgodność z najnowszymi ulepszeniami w ekosystemie Java.
+- **Docker 20.x oraz Docker Compose 2.x**: Niezbędne do wdrażania i zarządzania kontenerami aplikacji.
+- **Przeglądarki**: Kompatybilna z nowoczesnymi przeglądarkami internetowymi, w tym Chrome, Firefox i Edge.
 
-## 6. Diagrams and Architecture
+## 6. Diagramy i Architektura
 
-### System Architecture
+### Architektura Systemu
 ```mermaid
 graph TD;
     User-->UI;
@@ -56,7 +56,7 @@ graph TD;
     API-->ExternalServices;
 ```
 
-### UML Class Diagram
+### Diagram Klas UML
 ```mermaid
 classDiagram
     class User {
@@ -76,7 +76,7 @@ classDiagram
     }
 ```
 
-### Database Schema
+### Schemat Bazy Danych
 ```mermaid
 erDiagram
     USERS {
@@ -96,18 +96,96 @@ erDiagram
     USERS ||--o{ MESSAGES : receives
 ```
 
-### API Contract
+## 7. Specyfikacja API OpenAPI
 
-#### Authentication API
-- **POST /auth/register**: Register a new user.
-- **POST /auth/login**: Authenticate user and return a token.
+```yaml
+openapi: 3.0.0
+info:
+  title: Chat App API
+  version: 1.0.0
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '201':
+          description: User registered successfully
+  /auth/login:
+    post:
+      summary: Authenticate user and return a token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Authentication successful
+  /contacts:
+    get:
+      summary: Retrieve contact list
+      responses:
+        '200':
+          description: Contact list retrieved successfully
+    post:
+      summary: Add a new contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '201':
+          description: Contact added successfully
+  /contacts/{id}:
+    delete:
+      summary: Remove a contact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Contact removed successfully
+components:
+  schemas:
+    UserRegistration:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    Contact:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+```
 
-#### Contact Management API
-- **GET /contacts**: Retrieve contact list.
-- **POST /contacts**: Add a new contact.
-- **DELETE /contacts/{id}**: Remove a contact.
-
-#### Messaging API
-- **WebSocket /messages**: Send and receive messages in real-time.
-
-**Final Notes**: Regular updates to technical documentation are vital for maintaining the project's integrity and understanding.
+**Ostateczne Uwagi**: Regularne aktualizacje dokumentacji technicznej są kluczowe dla utrzymania integralności projektu oraz zrozumienia.
