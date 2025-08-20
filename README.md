@@ -9,17 +9,16 @@ Chat App jest nowoczesną platformą komunikacyjną zaprojektowaną do bezpieczn
 - **Rejestracja Użytkownika**: Użytkownicy mogą łatwo tworzyć nowe konta za pomocą uproszczonego formularza rejestracyjnego.
 - **Logowanie**: Bezpieczne uwierzytelnianie użytkowników za pomocą JWT zapewnia, że dostęp do aplikacji mają tylko autoryzowane osoby.
 - **Lista Kontaktów**: Użytkownicy mogą tworzyć, aktualizować oraz usuwać informacje o swoich kontaktach w aplikacji.
-- **Wysyłanie i Odbieranie Wiadomości**: Obsługa komunikacji w czasie rzeczywistym poprzez API WebSocket.
+- **Wysyłanie i Odbieranie Wiadomości**: Obsługa komunikacji w czasie rzeczywistym poprzez Spring WebSocket API.
 - **Historia Wiadomości**: Aplikacja rejestruje i pokazuje historię konwersacji pomiędzy użytkownikami dla łatwego odniesienia.
 
 ## 3. Technologie
 
 Aplikacja opiera się na zestawie nowoczesnych technologii i frameworków, aby zapewnić skalowalną i łatwą w utrzymaniu platformę komunikacyjną:
 
-- **Jakarta EE**: Zapewnia solidną podstawę do budowy skalowalnych aplikacji korporacyjnych.
-- **JAX-RS**: Ułatwia tworzenie usług internetowych RESTful.
-- **API WebSocket**: Umożliwia interaktywne, dwukierunkowe sesje komunikacyjne między klientami a serwerami.
-- **JPA (Hibernate)**: Zarządza interakcjami z bazą danych za pomocą odwzorowania obiektowo-relacyjnego.
+- **Spring Boot**: Ułatwia tworzenie wydajnych i odpornych aplikacji opartych na Spring Framework.
+- **Spring WebSocket API**: Umożliwia interaktywne, dwukierunkowe sesje komunikacyjne między klientami a serwerami.
+- **Spring Data JPA (Hibernate)**: Zarządza interakcjami z bazą danych za pomocą odwzorowania obiektowo-relacyjnego.
 - **PostgreSQL**: Potężny, otwartoźródłowy system baz danych obiektowo-relacyjnych.
 - **AspectJ**: Implementuje programowanie zorientowane na aspekty dla efektywnego rozdzielenia kodu.
 - **JWT**: Zabezpiecza informacje za pomocą JSON Web Tokens.
