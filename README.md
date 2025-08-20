@@ -1,4 +1,4 @@
-# Projekt Chat App README
+# Chat App
 
 ## 1. Przegląd Projektu
 
